@@ -1,6 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 require('dotenv').config();
-const accessKey = process.env.ACCESS_KEY;
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -19,9 +18,15 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
+    },
+    resetPasswordToken: {
+        type: String
+    },
+    resetPasswordExpires: {
+        type: Date
     }
 }, {
     timestamps: true
-})
+});
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);
