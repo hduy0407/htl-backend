@@ -22,12 +22,6 @@ app.use(express.json());
 // Connect to database
 connectDB();
 
-// Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'build')));
-}
-
-
 app.use("/auth", auth);
 app.use('/api/bookings', bookRoute);
 app.use('/api/users', userRoute);
@@ -35,10 +29,6 @@ app.use('/api/users', userRoute);
 // Global error handler
 app.use(errorHandling);
 
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
 // Graceful shutdown handling for production
 const shutdown = () => {
