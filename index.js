@@ -4,12 +4,12 @@ const helmet = require('helmet');
 const morgan = require('morgan'); 
 require('dotenv').config();
 const path = require('path');
-const connectDB = require('./config/db');
-const bookRoute = require('./routes/bookRoute');
-const userRoute = require('./routes/userRoute');
-const { errorHandling } = require('./middleware/errorHandler');
+const connectDB = require('./server/config/db');
+const bookRoute = require('./server/routes/bookRoute');
+const userRoute = require('./server/routes/userRoute');
+const { errorHandling } = require('./server/middleware/errorHandler');
 const cookieParser = require('cookie-parser');
-const { auth } = require('./middleware/authMiddleware');
+const { auth } = require('./server/middleware/authMiddleware');
 
 const app = express();
 
