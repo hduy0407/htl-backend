@@ -65,13 +65,21 @@ const confirmBooking = async (req, res, next) => {
         booking.confirmed = true;
         await booking.save();
 
+        const { email, name, date, timeStart, timeEnd, phone } = booking;
+        
+        if (!email) {
+            console.error("Error: No email found for this booking.");
+            return res.status(400).json({ message: "User email is required to send confirmation." });
+        }
+
+
         await sendDoubleBookingConfirmationEmail(email, name, { date, timeStart, timeEnd, phone });
 
-        res.json({ message: 'Booking confirmed'});
+        res.json({ message: 'Booking confirmed and email sent' });
     } catch (error) {
         next(error);
     }
-}
+};
 
 const deleteBooking = async (req, res, next) => {
     try {

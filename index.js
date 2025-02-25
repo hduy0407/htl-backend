@@ -22,6 +22,10 @@ app.use(express.json());
 // Connect to database
 connectDB();
 
+app.get('/', (req, res) => {
+    res.send('API is running...');
+});
+
 app.use("/auth", auth);
 app.use('/api/bookings', bookRoute);
 app.use('/api/users', userRoute);
