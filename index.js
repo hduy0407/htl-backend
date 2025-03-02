@@ -13,7 +13,11 @@ const { auth } = require('./server/middleware/authMiddleware');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL, // Allow only your frontend domain
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true // Allow cookies & auth headers
+}));
 app.use(helmet()); // Adds secure HTTP headers
 app.use(morgan('combined')); // Logs HTTP requests (you can change to 'dev' for more compact logs)
 app.use(cookieParser());

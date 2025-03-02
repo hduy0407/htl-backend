@@ -4,15 +4,14 @@ const sendConfirmationEmail = async (userEmail, userName) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.EMAIL_USER,  // Your email from .env
-            pass: process.env.EMAIL_PASS   // Your email password from .env
+            user: process.env.EMAIL_USER,  
+            pass: process.env.EMAIL_PASS   
         }
     });
 
-    // Create the HTML content
     const mailOptions = {
-        from: process.env.EMAIL_USER,   // Sender email
-        to: userEmail,                  // Receiver email
+        from: process.env.EMAIL_USER,   
+        to: userEmail,                 
         subject: 'Welcome to the Pickleball Court Reservation System!',
         html: `
             <html>
@@ -97,17 +96,17 @@ const sendConfirmationEmail = async (userEmail, userName) => {
 
 const sendBookingConfirmationEmail = async (userEmail, userName, bookingDetails) => {
     const transporter = nodemailer.createTransport({
-        service: 'gmail', // Or another email service provider
+        service: 'gmail', 
         auth: {
-            user: process.env.EMAIL_USER,  // Your email from .env
-            pass: process.env.EMAIL_PASS   // Your email password from .env
+            user: process.env.EMAIL_USER,  
+            pass: process.env.EMAIL_PASS  
         }
     });
 
     const mailOptions = {
-        from: process.env.EMAIL_USER,   // Sender email
-        to: userEmail,                  // Receiver email
-        subject: 'Booking Confirmation - Pickleball Court',
+        from: process.env.EMAIL_USER,   
+        to: userEmail,                  
+        subject: 'Booking Pending - HTL Pickleball Court',
         html: `
             <html>
                 <head>
@@ -153,7 +152,7 @@ const sendBookingConfirmationEmail = async (userEmail, userName, bookingDetails)
                 <body>
                     <div class="email-container">
                         <div class="email-header">
-                            <h1>Đặt sân thành công</h1>
+                            <h1>Đơn đặt sân đang chờ xác nhận</h1>
                         </div>
                         <div class="email-content">
                             <p>Xin Chào Anh/Chị ${userName},</p>
@@ -186,17 +185,17 @@ const sendBookingConfirmationEmail = async (userEmail, userName, bookingDetails)
 
 const sendDoubleBookingConfirmationEmail = async (userEmail, userName, bookingDetails) => {
     const transporter = nodemailer.createTransport({
-        service: 'gmail', // Or another email service provider
+        service: 'gmail', 
         auth: {
-            user: process.env.EMAIL_USER,  // Your email from .env
-            pass: process.env.EMAIL_PASS   // Your email password from .env
+            user: process.env.EMAIL_USER,  
+            pass: process.env.EMAIL_PASS   
         }
     });
 
     const mailOptions = {
-        from: process.env.EMAIL_USER,   // Sender email
-        to: userEmail,                  // Receiver email
-        subject: 'Booking Confirmation - Pickleball Court',
+        from: process.env.EMAIL_USER,   
+        to: userEmail,                  
+        subject: 'Booking Confirmation - HTL Pickleball Court',
         html: `
             <html>
                 <head>
