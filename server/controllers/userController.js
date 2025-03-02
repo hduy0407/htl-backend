@@ -28,6 +28,10 @@ const createUser = async (req, res, next) => {
             return res.status(400).json({ message: "Please fill all fields" });
         }
 
+        if (password.length < 8) {
+            return res.status(400).json({ message: "Password must be at least 8 characters long" });
+        }
+
         // Validate access key BEFORE hashing anything
         if (accessKey !== process.env.ACCESS_KEY) {
             return res.status(403).json({ message: "Invalid access key" });
@@ -67,6 +71,10 @@ const createAdmin = async (req, res, next) => {
         // Check for missing fields
         if (!name || !email || !password || !accessKey) {
             return res.status(400).json({ message: "Please fill all fields" });
+        }
+
+        if (password.length < 8) {
+            return res.status(400).json({ message: "Password must be at least 8 characters long" });
         }
 
         // Validate access key BEFORE hashing anything

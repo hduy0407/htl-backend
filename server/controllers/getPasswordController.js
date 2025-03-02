@@ -34,6 +34,10 @@ const resetPassword = async (req, res) => {
     const { token } = req.params;
     const { password, confirmPassword } = req.body;
 
+    if (password.length < 8) {
+        return res.status(400).json({ message: "Password must be at least 8 characters long" });
+    }
+
     if (password !== confirmPassword) {
         return res.status(400).json({ message: "Passwords do not match" });
     }
